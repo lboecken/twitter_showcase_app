@@ -17,6 +17,7 @@ h3{
 
 p {
   font-family: 'Ubuntu', sans-serif;
+  margin-left: 7px;
 }
 
 .background {
@@ -27,17 +28,44 @@ p {
   color: rgb(44, 47, 50) !important;
   font-size: 20px !important;
   font-family: 'Ubuntu', sans-serif;
+  
+
 }
 .nav-item {
   color: rgb(44, 47, 50) !important;
-  padding-left: 35px !important;
   font-size: 20px !important;
   font-family: 'Ubuntu', sans-serif;
   
 }
 
 .title {
-  padding-left: 126px !important;
+  padding-left: 121px !important;
 }
 
+/* .nav-item:hover, .navbar-brand:hover {
+color: rgb(29 161 242) !important;
+}
 
+.nav-item.active {
+  color: rgb(29 161 242) !important;
+} */
+
+.nav-link{
+  font-family: 'Ubuntu', sans-serif;
+  color: rgb(44, 47, 50) !important;
+  margin-right: 30px;
+}
+
+.nav-link:hover{
+  color: rgb(29 161 242) !important;
+}
+
+.nav-link.active{
+  font-family: 'Ubuntu', sans-serif;
+  color: rgb(29 161 242) !important;
+}
+
+.navbar-toggler {
+  margin-left: -20px ;
+
+}

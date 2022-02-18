@@ -1,28 +1,38 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import "../App.css";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
-function Navbar() {
+const NavBar = () => {
+  const [active, setActive] = useState("default");
+
   return (
     <div className="container">
-
-<nav className="navbar navbar-expand-xl navbar-light">
-  <a className="navbar-brand" href="#">Twidda</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div className="navbar-nav mx-1 ">
-      <a className="nav-item nav-link active" href="#">Home</a>
-      <a className="nav-item nav-link" href="#">Search Tweets</a>
-      <a className="nav-item nav-link" href="#">Random Tweet Finder</a>
-      
+      <Navbar collapseOnSelect expand="lg" variant="light">
+          <Navbar.Brand href="#home">Twidda</Navbar.Brand>
+        <Container>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav
+              activeKey={active}
+              onSelect={(selectedKey) => setActive(selectedKey)}
+            >
+              <Nav.Item>
+                <Nav.Link eventKey="default" className="linkText">
+                  Home
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="search">Search Tweets</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="random">Random Tweet Generator</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
-  </div>
-</nav>
-   
-    
-    </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default NavBar;

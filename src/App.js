@@ -15,7 +15,7 @@ const App = () => {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-10 title" >
-                    <h3 className="display-6 ">Twitter Showcase App</h3>
+                    <h3 className="display-5 ">Twitter Showcase App</h3>
                     <br></br>
                     <p className="text-muted mb-4">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
