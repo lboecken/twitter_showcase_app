@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+.navbar-brand {
+  color: rgb(44, 47, 50) !important;
+  font-size: 20px !important;
+  font-family: "Ubuntu", sans-serif;
+}
+img {
+  width: 120px;
+}
+
+img:hover {
+  filter: opacity(0.5) drop-shadow(0 0 0 rgb(9, 155, 245));
+}
+
+.nav-item {
+  color: rgb(44, 47, 50) !important;
+  font-size: 20px !important;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.nav-link {
+  font-family: "Ubuntu", sans-serif;
+  color: rgb(44, 47, 50) !important;
+  margin-right: 30px;
+}
+
+.nav-link:hover {
+  color: rgb(29 161 242) !important;
+}
+
+.nav-link.active {
+  font-family: "Ubuntu", sans-serif;
+  color: rgb(29 161 242) !important;
+}
+
+.navbar-toggler {
+  margin-left: 5px;
+}
