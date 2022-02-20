@@ -9,7 +9,7 @@ const NavBar = () => {
     <div className="container">
       <Navbar collapseOnSelect expand="lg" variant="light">
         <Navbar.Brand as={Link} to="/home">
-          <Tilty>
+          <Tilty className="tilty shadow-2" scale={1.05}>
             <img className="home_icon" src={logo} alt="Twidda Icon" />
           </Tilty>
         </Navbar.Brand>
