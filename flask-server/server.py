@@ -2,7 +2,7 @@
 from distutils.log import debug
 from flask import Flask, request, send_from_directory
 
-app = Flask(__name__,static_url_path='/static/public/index.html')
+app = Flask(__name__,static_url_path='/../static/build/index.html')
 
 @app.route("/")
 def send_js(path):
