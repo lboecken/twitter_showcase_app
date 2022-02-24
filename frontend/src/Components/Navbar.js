@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <div className="container">
       <Navbar collapseOnSelect expand="xl" variant="light">
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/home">
           <Tilty className="tilty shadow-2" scale={1.05}>
             <img className="home_icon" src={logo} alt="Twidda Icon" />
           </Tilty>
@@ -18,7 +18,7 @@ const NavBar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
               <Nav.Item>
-                <Nav.Link as={NavLink} to="/" exact="true">
+                <Nav.Link as={NavLink} to="/home" exact="true">
                   Home
                 </Nav.Link>
               </Nav.Item>

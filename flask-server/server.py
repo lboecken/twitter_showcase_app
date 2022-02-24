@@ -6,7 +6,7 @@ import requests
 
 
 
-app = Flask(__name__, static_folder="../build/")
+app = Flask(__name__, static_folder="../static/")
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -14,11 +14,11 @@ def serve(path):
     return send_from_directory(app.static_folder, 'index.html')
 
 
-@app.route("/serve")
+@app.route("/api/searchtweets")
 def search():
     
     try:
-        r = requests.get("http://swapi.dev/api/people/1233223/")
+        r = requests.get("http://swapi.dev/api/people/1/")
         data = r.json()
         name = data["name"]
         eye_color = data["eye_color"]
@@ -27,12 +27,6 @@ def search():
     except:
         
         return "Something Went Wrong..."
-
-    
-
-
-
-
 
 
 if __name__ == '__main__': 
