@@ -1,12 +1,12 @@
 from crypt import methods
 from distutils.log import debug
 import json
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory
 import requests
 
 
 
-app = Flask(__name__, static_folder="../static/")
+app = Flask(__name__, static_folder="../static")
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -14,20 +14,29 @@ def serve(path):
     return send_from_directory(app.static_folder, 'index.html')
 
 
+
+twitter_bearer_token = "Bearer AAAAAAAAAAAAAAAAAAAAAAZ1ZgEAAAAANU4BWdDYuZfN2c6lJLBkAcQDtiE%3D6HNKkn8rQmIKkUDXbhPCRL35m1azUUXsJ6K8XlMnwESJQ5SOVO"
+headers = { "Authorization" : twitter_bearer_token}
+url_base = "https://api.twitter.com/"
+request_url = url_base + '2/tweets/search/recent?query=b3d'
+
 @app.route("/api/searchtweets")
 def search():
     
     try:
-        r = requests.get("http://swapi.dev/api/people/1/")
+        r = requests.get(request_url, headers=headers)
         data = r.json()
-        name = data["name"]
-        eye_color = data["eye_color"]
-        hair_color = data["hair_color"]
-        return jsonify({"name": name, "eye_color": eye_color, "hair_color": hair_color})
+        return data
+        # print(data)
     except:
         
         return "Something Went Wrong..."
+        # print("Something Went Wrong...")
 
 
 if __name__ == '__main__': 
     app.run(debug=True)
+
+
+
+
