@@ -1,7 +1,7 @@
 from crypt import methods
 from distutils.log import debug
 import json
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, send_from_directory
 import requests
 
 
@@ -15,7 +15,7 @@ def serve(path):
 
 
 
-twitter_bearer_token = "Bearer AAAAAAAAAAAAAAAAAAAAAAZ1ZgEAAAAANU4BWdDYuZfN2c6lJLBkAcQDtiE%3D6HNKkn8rQmIKkUDXbhPCRL35m1azUUXsJ6K8XlMnwESJQ5SOVO"
+twitter_bearer_token = "Bearer theTokenID"
 headers = { "Authorization" : twitter_bearer_token}
 url_base = "https://api.twitter.com/"
 request_url = url_base + '2/tweets/search/recent?query=b3d'
