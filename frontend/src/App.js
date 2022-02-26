@@ -12,7 +12,7 @@ import Homepage from "./Components/Homepage";
 
 const App = () => {
   return (
-    <div className=" background">
+    <div>
       <Router>
         <>
           <Routes>

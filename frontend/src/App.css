@@ -27,3 +27,43 @@ p {
 .title {
   padding-left: 121px !important;
 }
+
+h1 {
+  font-size: 50px !important;
+  margin: auto;
+  text-align: center;
+}
+
+input {
+  margin: auto !important;
+  width: 40% !important;
+  text-align: center;
+  border-radius: 20px;
+  border: none !important;
+  background-color: rgb(255, 255, 255);
+  padding: 8px;
+}
+
+.centerText{
+  margin: auto !important;
+  width: 10% !important;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+  background-color: rgb(255, 255, 255);
+  padding: 4px;
+}
+
+.new_line {
+  white-space: pre-line;
+}
+
+
+@media (max-width: 1300px) {
+  .centerText {
+    width: 14% !important; 
+  }
+  }
+
+

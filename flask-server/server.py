@@ -27,7 +27,6 @@ def search():
         r = requests.get(request_url, headers=headers)
         data = r.json()
         return data
-        # print(data)
     except:
         
         return "Something Went Wrong..."

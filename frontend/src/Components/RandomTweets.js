@@ -1,6 +1,7 @@
 import React,  { useEffect, useState }  from 'react'
 import NavBar from "../Components/Navbar";
 import axios from "axios"
+import "../App.css";
 
 const RandomTweets = () => {
 
