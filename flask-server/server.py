@@ -3,7 +3,7 @@ from distutils.log import debug
 import json
 from flask import Flask, jsonify, send_from_directory
 import requests
-
+import os 
 
 
 app = Flask(__name__, static_folder="../static")
@@ -15,8 +15,9 @@ def serve(path):
 
 
 
-twitter_bearer_token = "Bearer theTokenID"
-headers = { "Authorization" : twitter_bearer_token}
+
+twitter_bearer_token =  os.environ.get("TWITTOKEN")
+headers = { "Authorization" : "Bearer " + twitter_bearer_token}
 url_base = "https://api.twitter.com/"
 request_url = url_base + '2/tweets/search/recent?query=b3d'
 
@@ -28,14 +29,12 @@ def search():
         data = r.json()
         return data
     except:
-        
         return "Something Went Wrong..."
         # print("Something Went Wrong...")
 
 
 if __name__ == '__main__': 
     app.run(debug=True)
-
 
 
 

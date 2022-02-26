@@ -17,22 +17,20 @@ const SearchTweets = () => {
   useEffect(
     () => {
 
-      const recentTweets = []
 
       axios.get("api/searchtweets").then((res) => {
         
-        const tweetData = res.data.data
-        tweetData.map((tweet) => {
-          
-            recentTweets.push(tweet.text)
-            setTweets(recentTweets.flat())
-            console.log(tweet.text)
-            // console.log(tweets)
-          })
+        console.log(res.data.data)
+        setTweets(res.data.data)
      
     })
-    }, [setTweets, searchTerm]
+    }, []
   )
+
+    const renderedTweets = tweets.map(tweet => {
+      return (<p>({tweet.id}) {tweet.text}</p>)
+    })
+
   return (
 
     <>
@@ -77,7 +75,10 @@ const SearchTweets = () => {
       
 
       </div>
-          <p>{tweets}</p>
+      
+            <p></p>
+
+          <p>{renderedTweets}</p>
       </>  
 );
 };

@@ -16,7 +16,7 @@ const App = () => {
       <Router>
         <>
           <Routes>
-            <Route path="/home" element={<Homepage />} />
+            <Route path="/" element={<Homepage />} />
             <Route path="/searchtweets" element={<SearchTweets />} />
             <Route path="/randomtweets" element={<RandomTweets />} />
           </Routes>
