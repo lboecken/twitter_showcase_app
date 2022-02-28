@@ -3,8 +3,7 @@ import "./App.css";
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Routes,
+  Routes
 } from "react-router-dom";
 import SearchTweets from "./Components/SearchTweets";
 import RandomTweets from "./Components/RandomTweets";
