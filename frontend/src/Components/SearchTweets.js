@@ -2,31 +2,41 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./Navbar";
 import axios from "axios";
 import "../App.css";
-import { Button } from "react-bootstrap";
 
 // add state for tweets [array]
 // update state with the res data
 //render data inside tweets array
 
+
 const SearchTweets = () => {
   const [tweets, setTweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     axios.get("api/searchtweets").then((res) => {
-      console.log(res.data.data, res.data.includes);
+      setUsers(res.data.includes.users);
 
-      setTweets(res.data.data, res.data.includes);
+      setTweets(res.data.data);
     });
   }, []);
 
   const renderedTweets = tweets.map((tweet) => {
+    users.map((user) => {
+      if (user.id == tweet.author_id) {
+        tweet.name = user.name;
+        tweet.username = user.username;
+        tweet.profile_image_url = user.profile_image_url;
+      }
+    });
+
     return (
       <p className="box">
-        ({tweet.id}) {tweet.text}
+        <img src={tweet.profile_image_url}></img>
+        {tweet.name} <br></br>@{tweet.username} <br></br>
+        {tweet.text}
         <div>
-          ({tweet.username} {tweet.name}
-          Retweets: {tweet.public_metrics.retweet_count}) (Likes:{" "}
+          (Retweets: {tweet.public_metrics.retweet_count}) (Likes:{" "}
           {tweet.public_metrics.like_count}) (Replies:{" "}
           {tweet.public_metrics.reply_count})
         </div>
