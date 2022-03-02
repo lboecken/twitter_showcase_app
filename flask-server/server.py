@@ -20,7 +20,7 @@ url_base = "https://api.twitter.com/"
 request_url = url_base + '2/tweets/search/recent?query=b3d'
 params = {
     "expansions": "author_id,referenced_tweets.id",
-    "tweet.fields" : "author_id,public_metrics",
+    "tweet.fields" : "author_id,public_metrics,created_at,referenced_tweets",
     "user.fields": "username,name,profile_image_url"
     }
 

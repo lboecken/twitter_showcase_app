@@ -2,22 +2,27 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./Navbar";
 import axios from "axios";
 import "../App.css";
+import retweetsAction from "../img/retweet-action.png";
+import likeAction from "../img/like-action.png";
+import replyAction from "../img/reply-action_0.png";
 
 // add state for tweets [array]
 // update state with the res data
 //render data inside tweets array
 
-
 const SearchTweets = () => {
   const [tweets, setTweets] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [users, setUsers] = useState([]);
+  const [analytics, setAnalytics] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     axios.get("api/searchtweets").then((res) => {
-      setUsers(res.data.includes.users);
-
       setTweets(res.data.data);
+      setUsers(res.data.includes.users);
+      setAnalytics(res.data.includes.tweets);
+      console.log(res.data.includes.tweets);
+      console.log(res.data.data);
     });
   }, []);
 
@@ -30,15 +35,37 @@ const SearchTweets = () => {
       }
     });
 
+    // analytics.map((metric) => {
+    //   if (metric.id == ((tweet.referenced_tweets[0]).id).toString()) {
+    //     tweet.public_metrics.like_count =  metric.public_metrics.like_count;
+    //     tweet.public_metrics.reply_count = metric.public_metrics.reply_count;
+    //   }
+
+    // });
+
     return (
       <p className="box">
-        <img src={tweet.profile_image_url}></img>
-        {tweet.name} <br></br>@{tweet.username} <br></br>
-        {tweet.text}
-        <div>
-          (Retweets: {tweet.public_metrics.retweet_count}) (Likes:{" "}
-          {tweet.public_metrics.like_count}) (Replies:{" "}
-          {tweet.public_metrics.reply_count})
+        <div className="userName">
+          <img className="circularIcon" src={tweet.profile_image_url}></img>
+          <div className="name-padding">
+            <div>{tweet.name}</div>
+            <div>@{tweet.username}</div>
+          </div>
+        </div>
+        <div className="text-padding">{tweet.text}</div>
+        <div className="analyticsDiv">
+          <div>
+            <img src={replyAction} className="analyticsIcons"></img>{" "}
+            {tweet.public_metrics.reply_count}
+          </div>
+          <div>
+            <img src={retweetsAction} className="analyticsIcons"></img>{" "}
+            {tweet.public_metrics.retweet_count}
+          </div>
+          <div>
+            <img src={likeAction} className="analyticsIcons"></img>{" "}
+            {tweet.public_metrics.like_count}
+          </div>
         </div>
       </p>
     );
