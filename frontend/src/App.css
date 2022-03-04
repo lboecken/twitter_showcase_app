@@ -100,3 +100,12 @@ input {
 .text-padding {
   padding: 20px !important;
 }
+
+.mediaImg {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-bottom: 10px !important;
+}

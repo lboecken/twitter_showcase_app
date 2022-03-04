@@ -19,9 +19,10 @@ headers = { "Authorization" : "Bearer " + str(twitter_bearer_token)}
 url_base = "https://api.twitter.com/"
 request_url = url_base + '2/tweets/search/recent?query=b3d'
 params = {
-    "expansions": "author_id,referenced_tweets.id",
-    "tweet.fields" : "author_id,public_metrics,created_at,referenced_tweets",
-    "user.fields": "username,name,profile_image_url"
+    "expansions": "author_id,referenced_tweets.id,attachments.media_keys",
+    "tweet.fields" : "author_id,public_metrics,created_at,attachments,entities",
+    "user.fields": "username,name,profile_image_url",
+    "media.fields": "url,preview_image_url"
     }
 
 @app.route("/api/searchtweets")
