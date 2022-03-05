@@ -5,7 +5,7 @@ import "../App.css";
 import retweetsAction from "../img/retweet-action.png";
 import likeAction from "../img/like-action.png";
 import replyAction from "../img/reply-action_0.png";
-import playBtn from "../img/play_gif_2.png"
+import playBtn from "../img/play_gif_2.png";
 
 // add state for tweets [array]
 // update state with the res data
@@ -14,20 +14,18 @@ import playBtn from "../img/play_gif_2.png"
 const SearchTweets = () => {
   const [tweets, setTweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [playButton, setPlayButton] = useState(false);
-  
-  useEffect(() => {
-    
-    getTweets()
-    
-    
-  }, []);
+  const [isData, setIsData] = useState(true);
 
   async function getTweets() {
-    await axios.get("api/searchtweets").then((res) => {
+    await axios.get("api/searchtweets?searchTerm=" + searchTerm).then((res) => {
       setTweets(res.data);
-      console.log(res.data);
-      
+      if (!res.data.data) {
+        setIsData(false);
+        console.log("No Data Found");
+      } else {
+        setIsData(true);
+      }
+      // console.log(res.data);
     });
   }
 
@@ -35,34 +33,32 @@ const SearchTweets = () => {
     return tweets.includes.users.find((user) => user.id === author_id);
   }
 
-  function getMedia (media_key) {
-    return tweets.includes.media.find((media) => media.media_key === media_key )
+  function getMedia(media_key) {
+    return tweets?.includes?.media?.find(
+      (media) => media.media_key === media_key
+    );
   }
-
 
   const data = tweets?.data?.map((tweet) => {
     return {
       ...tweet,
       user: getUserInfo(tweet.author_id),
-      retweet_metrics: tweet?.referenced_tweets?.map((item) => 
-      tweets?.includes?.tweets.find((tweet) => tweet.id === item.id)
-      ) || [],
+      retweet_metrics:
+        tweet?.referenced_tweets?.map((item) =>
+          tweets?.includes?.tweets.find((tweet) => tweet.id === item.id)
+        ) || [],
       media: getMedia(tweet?.attachments?.media_keys[0]),
-      playBtn: {playBtn}, 
-      rt: tweet?.referenced_tweets?.map( (item) => {
-        return item.type = "(Retweeted) " || []
-
-      })
+      playBtn: { playBtn },
+      rt: tweet?.referenced_tweets?.map((item) => {
+        return (item.type = "(Retweeted) " || []);
+      }),
     };
   });
 
-   
-  
+  // console.log({ data });
 
-  console.log({ data });
-
-  function timeConvert (date) {
-    let seconds = Math.floor(((new Date()) - new Date(date)) / 1000);
+  function timeConvert(date) {
+    let seconds = Math.floor((new Date() - new Date(date)) / 1000);
 
     let interval = Math.floor(seconds / 31536000);
 
@@ -89,69 +85,82 @@ const SearchTweets = () => {
     if (interval > 1) {
       return interval + " mins ago";
     }
-    return (seconds).toString() + " secs ago"; 
+    return seconds.toString() + " secs ago";
   }
 
-  
-  
-  const renderedTweets = data && data.map((tweet) => {
-    
-    let target = tweet?.media?.url
-    let playGif = ''
+  const renderedTweets =
+    data &&
+    data.map((tweet) => {
+      let target = tweet?.media?.url;
+      let playButton = false;
 
-    
-    if (tweet?.media?.type == "animated_gif") {
-      let url = tweet?.media?.preview_image_url
-      let extract = url.substring(url.indexOf('b/') + 2)
-      let finalExtract = extract.replace('.jpg', '')
-      let gif_URL = `https://video.twimg.com/tweet_video/${finalExtract}.mp4`
-      tweet.media.url = url
-      target = gif_URL
-      playGif = playBtn
-      
-      console.log("There is a gif present")
-    }
+      if (tweet?.media?.type == "animated_gif") {
+        let url = tweet?.media?.preview_image_url;
+        let extract = url.substring(url.indexOf("b/") + 2);
+        let finalExtract = extract.replace(".jpg", "");
+        let gif_URL = `https://video.twimg.com/tweet_video/${finalExtract}.mp4`;
+        tweet.media.url = url;
+        target = gif_URL;
+        playButton = true;
+        // console.log("There is a gif present")
+      }
 
-    tweet.created_at = timeConvert(tweet.created_at)
-  
-    return (
-      <p className="box">
-        <div className="userName">
-          <img className="circularIcon" src={tweet.user.profile_image_url}></img>
-          <div className="name-padding">
-            <div>{tweet.user.name} · {tweet.created_at}</div>
-            <div>@{tweet.user.username}</div>
-          </div>
-        </div>
-        <div className="text-padding"> 
-         {tweet?.rt}   
-        {tweet?.retweet_metrics[0]?.text || tweet.text}
-        </div>
-        <div className="media-container"> 
-        <a href={target} target="_blank">
-        <img  id="media" className="mediaImg" src={tweet?.media?.url} alt=""></img>
-        <img src={playGif || ''}></img>
+      tweet.created_at = timeConvert(tweet.created_at);
 
-        </a>
-        </div>
+      return (
+        <p className="box">
+          <div className="userName">
+            <img
+              className="circularIcon"
+              src={tweet.user.profile_image_url}
+            ></img>
+            <div className="name-padding">
+              <div>
+                {tweet.user.name} · {tweet.created_at}
+              </div>
+              <div>@{tweet.user.username}</div>
+            </div>
+          </div>
+          <div className="text-padding">
+            {tweet?.rt}
+            {tweet?.retweet_metrics[0]?.text || tweet.text}
+          </div>
+          <div className="media-container">
+            <a href={target} target="_blank">
+              <img
+                id="media"
+                className="mediaImg"
+                src={tweet?.media?.url}
+                alt=""
+              ></img>
+              {playButton == true ? (
+                <img className="playBtn" src={playBtn}></img>
+              ) : (
+                ""
+              )}
+            </a>
+          </div>
 
-        <div className="analyticsDiv">
-          <div>
-            <img src={replyAction} className="analyticsIcons"></img>{" "}
-            {tweet?.retweet_metrics[0]?.public_metrics?.reply_count || tweet.public_metrics.reply_count}
+          <div className="analyticsDiv">
+            <div>
+              <img src={replyAction} className="analyticsIcons"></img>{" "}
+              {tweet?.retweet_metrics[0]?.public_metrics?.reply_count ||
+                tweet.public_metrics.reply_count}
+            </div>
+            <div>
+              <img src={retweetsAction} className="analyticsIcons"></img>{" "}
+              {tweet?.retweet_metrics[0]?.public_metrics?.retweet_count ||
+                tweet.public_metrics.retweet_count}
+            </div>
+            <div>
+              <img src={likeAction} className="analyticsIcons"></img>{" "}
+              {tweet?.retweet_metrics[0]?.public_metrics?.like_count ||
+                tweet.public_metrics.like_count}
+            </div>
           </div>
-          <div>
-            <img src={retweetsAction} className="analyticsIcons"></img>{" "}
-            {tweet?.retweet_metrics[0]?.public_metrics?.retweet_count || tweet.public_metrics.retweet_count}
-          </div>
-          <div>
-            <img src={likeAction} className="analyticsIcons"></img>{" "}
-            {tweet?.retweet_metrics[0]?.public_metrics?.like_count || tweet.public_metrics.like_count}
-          </div>
-        </div>
-      </p>
-    );
-  });
+        </p>
+      );
+    });
 
   return (
     <>
@@ -172,6 +181,7 @@ const SearchTweets = () => {
             <input
               type="text"
               placeholder="Search for People, Topics or Keywords"
+              id="input"
               onChange={(e) => {
                 setSearchTerm(e.target.value);
               }}
@@ -179,7 +189,15 @@ const SearchTweets = () => {
             />
 
             <p></p>
-            <button className="centerText">Search</button>
+            <button
+              className="centerText"
+              onClick={() => {
+                getTweets();
+              }}
+            >
+              Search
+            </button>
+
             <p></p>
           </div>
         </div>
@@ -187,8 +205,13 @@ const SearchTweets = () => {
       <div></div>
 
       <p></p>
-
-      <div>{renderedTweets}</div>
+      {isData ? (
+        <div>{renderedTweets}</div>
+      ) : (
+        <p className="notFound">
+          No Tweets Found. Please try searching for another term.
+        </p>
+      )}
     </>
   );
 };

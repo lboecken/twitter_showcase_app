@@ -116,11 +116,17 @@ input {
 
 .playBtn {
   position: absolute;
-  width: 96px;
-  height: 96px;
+  width: 70px;
+  height: 70px;
   left: 50%;
   top: 50%;
-  margin-left: -48px; 
-  margin-top: -48px; 
-  
+  transform: translate(-50%, -50%);
+}
+
+.notFound {
+  margin: 0 auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
