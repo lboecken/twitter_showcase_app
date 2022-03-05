@@ -109,3 +109,18 @@ input {
   margin-right: auto !important;
   padding-bottom: 10px !important;
 }
+
+.media-container {
+  position: relative;
+}
+
+.playBtn {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  left: 50%;
+  top: 50%;
+  margin-left: -48px; 
+  margin-top: -48px; 
+  
+}

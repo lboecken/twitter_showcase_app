@@ -14,6 +14,7 @@ def serve(path):
     return send_from_directory(app.static_folder, 'index.html')
 
 
+
 twitter_bearer_token =  os.environ.get("TWITTOKEN")
 headers = { "Authorization" : "Bearer " + str(twitter_bearer_token)}
 url_base = "https://api.twitter.com/"

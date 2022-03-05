@@ -5,7 +5,7 @@ import "../App.css";
 import retweetsAction from "../img/retweet-action.png";
 import likeAction from "../img/like-action.png";
 import replyAction from "../img/reply-action_0.png";
-// import moment from 'moment';
+import playBtn from "../img/play_gif_2.png"
 
 // add state for tweets [array]
 // update state with the res data
@@ -14,10 +14,12 @@ import replyAction from "../img/reply-action_0.png";
 const SearchTweets = () => {
   const [tweets, setTweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [playButton, setPlayButton] = useState(false);
+  
   useEffect(() => {
-
+    
     getTweets()
+    
     
   }, []);
 
@@ -45,66 +47,91 @@ const SearchTweets = () => {
       retweet_metrics: tweet?.referenced_tweets?.map((item) => 
       tweets?.includes?.tweets.find((tweet) => tweet.id === item.id)
       ) || [],
-      media: getMedia(tweet?.attachments?.media_keys[0])
+      media: getMedia(tweet?.attachments?.media_keys[0]),
+      playBtn: {playBtn}, 
+      rt: tweet?.referenced_tweets?.map( (item) => {
+        return item.type = "(Retweeted) " || []
+
+      })
     };
   });
 
+   
+  
 
   console.log({ data });
 
-  // function timeConvert (date) {
-  //   let seconds = Math.floor(((new Date()) - new Date(date)) / 1000);
+  function timeConvert (date) {
+    let seconds = Math.floor(((new Date()) - new Date(date)) / 1000);
 
-  //   let interval = Math.floor(seconds / 31536000);
+    let interval = Math.floor(seconds / 31536000);
 
-  //   if (interval > 1) {
-  //     return interval + " years";
-  //   }
+    if (interval > 1) {
+      return interval + " yrs ago";
+    }
 
-  //   interval = Math.floor(seconds / 2592000);
-  //   if (interval > 1) {
-  //     return interval + " months";
-  //   }
-  //   interval = Math.floor(seconds / 86400);
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+      return interval + " months ago";
+    }
+    interval = Math.floor(seconds / 86400);
 
-  //   if (interval > 1) {
-  //     return interval + " days";
-  //   }
-  //   interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+      return interval + " days ago";
+    }
+    interval = Math.floor(seconds / 3600);
 
-  //   if (interval > 1) {
-  //     return interval + " hours";
-  //   }
-  //   interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+      return interval + " hrs ago";
+    }
+    interval = Math.floor(seconds / 60);
 
-  //   if (interval > 1) {
-  //     return interval + " minutes";
-  //   }
-  //   return (seconds).toString() + " seconds"; 
-  // }
+    if (interval > 1) {
+      return interval + " mins ago";
+    }
+    return (seconds).toString() + " secs ago"; 
+  }
 
-  // console.log(timeConvert("2022-03-03T06:11:20.000Z"))
-
+  
+  
   const renderedTweets = data && data.map((tweet) => {
+    
+    let target = tweet?.media?.url
+    let playGif = ''
 
+    
     if (tweet?.media?.type == "animated_gif") {
+      let url = tweet?.media?.preview_image_url
+      let extract = url.substring(url.indexOf('b/') + 2)
+      let finalExtract = extract.replace('.jpg', '')
+      let gif_URL = `https://video.twimg.com/tweet_video/${finalExtract}.mp4`
+      tweet.media.url = url
+      target = gif_URL
+      playGif = playBtn
+      
       console.log("There is a gif present")
     }
+
+    tweet.created_at = timeConvert(tweet.created_at)
   
     return (
       <p className="box">
         <div className="userName">
           <img className="circularIcon" src={tweet.user.profile_image_url}></img>
           <div className="name-padding">
-            <div>{tweet.user.name}</div>
+            <div>{tweet.user.name} · {tweet.created_at}</div>
             <div>@{tweet.user.username}</div>
-            {/* <div>{tweet.created_at}</div> */}
           </div>
         </div>
-        <div className="text-padding">{tweet?.retweet_metrics[0]?.text || tweet.text}</div>
-        <div> 
-        <a href={tweet?.media?.url} target="_blank">
-        <img className="mediaImg" src={tweet?.media?.url}></img>
+        <div className="text-padding"> 
+         {tweet?.rt}   
+        {tweet?.retweet_metrics[0]?.text || tweet.text}
+        </div>
+        <div className="media-container"> 
+        <a href={target} target="_blank">
+        <img  id="media" className="mediaImg" src={tweet?.media?.url} alt=""></img>
+        <img src={playGif || ''}></img>
+
         </a>
         </div>
 
