@@ -10,7 +10,7 @@
   background-position: center center;
 }
 
-h3 {
+h3, h2 {
   color: rgb(50, 44, 44);
   font-family: "Ubuntu", sans-serif;
 }
@@ -130,3 +130,17 @@ input {
   justify-content: center;
   text-align: center;
 }
+
+
+.explore{
+  margin: 0 auto;
+  width: 50% !important;
+  height: auto !important;
+  display: flex !important;
+  align-content: center !important;
+  justify-content: center o !important;
+  opacity: 0.1 !important;
+  pointer-events: none;
+
+}
+

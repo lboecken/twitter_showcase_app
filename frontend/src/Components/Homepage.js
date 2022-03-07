@@ -13,19 +13,18 @@ const Homepage = () => {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-10 title">
-                    <h3 className="display-5 ">Welcome to Twidda</h3>
+                    <h1 className="display-5 ">Say Goodbye to Doomscrolling!</h1>
                     <br></br>
                     <p className="text-muted mb-4">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit,
+                      Scrolling through Twitter is all fun, games and laughs until an innocent 
+                      glance at the "What's Happening" section sends you spiraling into an anxious doomscrolling episode.
+                      Twidda strips away the bells and whistles and allows you to protect your peace of mind by being super 
+                      deliberate with your search. 
                     </p>
                     <p className="text-muted mb-4">
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco.
+                    Search the topics that interest you sans distraction in the Search Tweets
+                    section or check out the Random Tweet Generator for a wholesome shot of dopamine. 
+                    Your Cortisol levels will undoubtedly thank you! 
                     </p>
                   </div>
                 </div>

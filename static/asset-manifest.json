@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "./static/static/css/main.3fbed4da.css",
-    "main.js": "./static/static/js/main.c19d5de0.js",
+    "main.css": "./static/static/css/main.3f32451f.css",
+    "main.js": "./static/static/js/main.3cf1b2ad.js",
     "static/media/Twidda_Grafitti_Background.png": "./static/static/media/Twidda_Grafitti_Background.0e835adad211b879ac6e.png",
+    "static/media/explore_img.png": "./static/static/media/explore_img.d64e64a44485dbae2e64.png",
     "static/media/Twidda_HomePage_Icon.png": "./static/static/media/Twidda_HomePage_Icon.c92562f57ca2de049460.png",
     "static/media/play_gif_2.png": "./static/static/media/play_gif_2.4dbe919adc7e2340f290.png",
     "index.html": "./static/index.html",
-    "main.3fbed4da.css.map": "./static/static/css/main.3fbed4da.css.map",
-    "main.c19d5de0.js.map": "./static/static/js/main.c19d5de0.js.map"
+    "main.3f32451f.css.map": "./static/static/css/main.3f32451f.css.map",
+    "main.3cf1b2ad.js.map": "./static/static/js/main.3cf1b2ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fbed4da.css",
-    "static/js/main.c19d5de0.js"
+    "static/css/main.3f32451f.css",
+    "static/js/main.3cf1b2ad.js"
   ]
 }

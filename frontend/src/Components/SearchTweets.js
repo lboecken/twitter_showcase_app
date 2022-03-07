@@ -6,6 +6,7 @@ import retweetsAction from "../img/retweet-action.png";
 import likeAction from "../img/like-action.png";
 import replyAction from "../img/reply-action_0.png";
 import playBtn from "../img/play_gif_2.png";
+import exploreImg from "../img/explore_img.png"
 
 // add state for tweets [array]
 // update state with the res data
@@ -15,13 +16,15 @@ const SearchTweets = () => {
   const [tweets, setTweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isData, setIsData] = useState(true);
+  const [isDefault, setIsDefault] = useState(true)
 
   async function getTweets() {
     await axios.get("api/searchtweets?searchTerm=" + searchTerm).then((res) => {
       setTweets(res.data);
+      setIsDefault(false);
       if (!res.data.data) {
         setIsData(false);
-        console.log("No Data Found");
+        // console.log("No Data Found");
       } else {
         setIsData(true);
       }
@@ -45,7 +48,7 @@ const SearchTweets = () => {
       user: getUserInfo(tweet.author_id),
       retweet_metrics:
         tweet?.referenced_tweets?.map((item) =>
-          tweets?.includes?.tweets.find((tweet) => tweet.id === item.id)
+          tweets?.includes?.tweets?.find((tweet) => tweet.id === item.id)
         ) || [],
       media: getMedia(tweet?.attachments?.media_keys[0]),
       playBtn: { playBtn },
@@ -87,6 +90,7 @@ const SearchTweets = () => {
     }
     return seconds.toString() + " secs ago";
   }
+
 
   const renderedTweets =
     data &&
@@ -185,6 +189,11 @@ const SearchTweets = () => {
               onChange={(e) => {
                 setSearchTerm(e.target.value);
               }}
+              onKeyUp={ (event) => {
+                if (event.key == "Enter") {
+                  getTweets();
+                }
+              }}
               autoFocus="True"
             />
 
@@ -205,7 +214,10 @@ const SearchTweets = () => {
       <div></div>
 
       <p></p>
-      {isData ? (
+
+      { isDefault ? (<p><img className="explore" src={exploreImg}></img></p>)
+      :
+      isData ? (
         <div>{renderedTweets}</div>
       ) : (
         <p className="notFound">
