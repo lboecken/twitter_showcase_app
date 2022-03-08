@@ -38,6 +38,27 @@ def search():
         return "Something Went Wrong..."
         # print("Something Went Wrong...")
 
+@app.route("/api/randomtweets")
+
+def random():
+    request_url = url_base + "2/tweets/search/recent"
+    params = {
+        "query":"from:Outlander_STARZ",
+        "expansions": "author_id,referenced_tweets.id,attachments.media_keys",
+        "tweet.fields" : "author_id,public_metrics,created_at,attachments,entities",
+        "user.fields": "username,name,profile_image_url,description,verified,created_at,location,public_metrics",
+        "media.fields": "url,preview_image_url"
+        }
+    
+    try:
+        r = requests.get(request_url, headers=headers, params=params)
+        data = r.json()
+        return data
+    except:
+        return "Something Went Wrong..."
+        # print("Something Went Wrong...")
+
+
 
 if __name__ == '__main__': 
     app.run(debug=True)

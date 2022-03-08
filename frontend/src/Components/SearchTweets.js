@@ -6,17 +6,14 @@ import retweetsAction from "../img/retweet-action.png";
 import likeAction from "../img/like-action.png";
 import replyAction from "../img/reply-action_0.png";
 import playBtn from "../img/play_gif_2.png";
-import exploreImg from "../img/explore_img.png"
+import exploreImg from "../img/explore_img.png";
 
-// add state for tweets [array]
-// update state with the res data
-//render data inside tweets array
 
 const SearchTweets = () => {
   const [tweets, setTweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isData, setIsData] = useState(true);
-  const [isDefault, setIsDefault] = useState(true)
+  const [isDefault, setIsDefault] = useState(true);
 
   async function getTweets() {
     await axios.get("api/searchtweets?searchTerm=" + searchTerm).then((res) => {
@@ -90,7 +87,6 @@ const SearchTweets = () => {
     }
     return seconds.toString() + " secs ago";
   }
-
 
   const renderedTweets =
     data &&
@@ -189,7 +185,7 @@ const SearchTweets = () => {
               onChange={(e) => {
                 setSearchTerm(e.target.value);
               }}
-              onKeyUp={ (event) => {
+              onKeyUp={(event) => {
                 if (event.key == "Enter") {
                   getTweets();
                 }
@@ -215,9 +211,11 @@ const SearchTweets = () => {
 
       <p></p>
 
-      { isDefault ? (<p><img className="explore" src={exploreImg}></img></p>)
-      :
-      isData ? (
+      {isDefault ? (
+        <p>
+          <img className="explore" src={exploreImg}></img>
+        </p>
+      ) : isData ? (
         <div>{renderedTweets}</div>
       ) : (
         <p className="notFound">

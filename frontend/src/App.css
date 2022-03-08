@@ -10,7 +10,8 @@
   background-position: center center;
 }
 
-h3, h2 {
+h3,
+h2 {
   color: rgb(50, 44, 44);
   font-family: "Ubuntu", sans-serif;
 }
@@ -87,6 +88,11 @@ input {
   border-radius: 50% !important;
   /* border: 1px solid rgba(0, 0, 0, 0.5); */
 }
+.circularProfileIcon {
+  width: 110px;
+  height: 110px;
+  border-radius: 50% !important;
+}
 
 .userName {
   overflow: hidden;
@@ -95,6 +101,9 @@ input {
 
 .name-padding {
   padding-left: 20px !important;
+}
+.profile-name {
+  font-size: 30px !important;
 }
 
 .text-padding {
@@ -131,8 +140,7 @@ input {
   text-align: center;
 }
 
-
-.explore{
+.explore {
   margin: 0 auto;
   width: 50% !important;
   height: auto !important;
@@ -141,6 +149,42 @@ input {
   justify-content: center o !important;
   opacity: 0.1 !important;
   pointer-events: none;
-
 }
 
+.descriptionPadding {
+  padding: 15px;
+}
+
+.locationIcon {
+  max-width: 25px;
+  /* padding-right: 5px; */
+}
+
+.locationDiv {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.metricPadding {
+  overflow: hidden;
+  display: flex;
+  /* justify-content: space-evenly; */
+  padding: 15px;
+  pointer-events: none;
+}
+
+.verified {
+  max-width: 30px;
+  padding-left: 2px;
+  margin-top: -5px;
+  pointer-events: none;
+}
+
+.followersPadding {
+  padding: 15px;
+}
+
+.extraPadding {
+  padding-left: 15px;
+}
