@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/static/css/main.bb0053ed.css",
-    "main.js": "./static/static/js/main.506aceee.js",
+    "main.css": "./static/static/css/main.01d91ba7.css",
+    "main.js": "./static/static/js/main.759d3ddb.js",
     "static/media/Twidda_Grafitti_Background.png": "./static/static/media/Twidda_Grafitti_Background.0e835adad211b879ac6e.png",
     "static/media/explore_img.png": "./static/static/media/explore_img.d64e64a44485dbae2e64.png",
     "static/media/Twidda_HomePage_Icon.png": "./static/static/media/Twidda_HomePage_Icon.c92562f57ca2de049460.png",
@@ -11,11 +11,11 @@
     "static/media/dogFeelingsImg.jpg": "./static/static/media/dogFeelingsImg.a18ec6ca15a9b907ceab.jpg",
     "static/media/artStationImg.jpeg": "./static/static/media/artStationImg.7cde9539589c932b20ff.jpeg",
     "index.html": "./static/index.html",
-    "main.bb0053ed.css.map": "./static/static/css/main.bb0053ed.css.map",
-    "main.506aceee.js.map": "./static/static/js/main.506aceee.js.map"
+    "main.01d91ba7.css.map": "./static/static/css/main.01d91ba7.css.map",
+    "main.759d3ddb.js.map": "./static/static/js/main.759d3ddb.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb0053ed.css",
-    "static/js/main.506aceee.js"
+    "static/css/main.01d91ba7.css",
+    "static/js/main.759d3ddb.js"
   ]
 }

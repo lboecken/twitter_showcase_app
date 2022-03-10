@@ -36,7 +36,7 @@ def search():
         return data
     except:
         return "Something Went Wrong..."
-        # print("Something Went Wrong...")
+        
 
 @app.route("/api/randomtweets")
 
@@ -63,7 +63,7 @@ def random():
         return data
     except:
         return "Something Went Wrong..."
-        # print("Something Went Wrong...")
+        
 
 
 

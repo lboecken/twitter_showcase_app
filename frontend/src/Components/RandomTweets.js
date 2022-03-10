@@ -6,8 +6,8 @@ import retweetsAction from "../img/retweet-action.png";
 import likeAction from "../img/like-action.png";
 import replyAction from "../img/reply-action_0.png";
 import playBtn from "../img/play_gif_2.png";
-import locationIcon from "../img/location_icon_copy.jpg";
-import createdAtIcon from "../img/created_at_icon_copy.jpg";
+import locationIcon from "../img/location_icon_main.jpg";
+import createdAtIcon from "../img/created_at_icon_main.jpg";
 import verifiedIcon from "../img/verified_icon.jpg";
 import earthPixImg from "../img/earthPixImg.jpg";
 import dogFeelingsImg from "../img/dogFeelingsImg.jpg";
@@ -191,10 +191,14 @@ const RandomTweets = () => {
       tweet.created_at = timeConvert(tweet.created_at);
       tweet.user.created_at = profileTimeConvert(tweet.user.created_at);
 
+      if (!tweet.user.location) {
+        tweet.user.location = "Unknown";
+      }
+
       if (tweet.key === oneRandomTweet) {
         return (
           <>
-            <p className="box">
+            <div className="box">
               <div className="userName">
                 <img
                   className="circularProfileIcon"
@@ -211,14 +215,11 @@ const RandomTweets = () => {
               <div className="descriptionPadding">{tweet.user.description}</div>
               <div className="metricPadding">
                 <div className="extraPadding">
-                  {tweet.user.location ? (
-                    <img src={locationIcon} className="locationIcon"></img>
-                  ) : (
-                    ""
-                  )}
+                  <img src={locationIcon} className="locationIcon"></img>
+
                   {tweet.user.location}
                 </div>
-                <div>
+                <div className="extraPadding">
                   <img src={createdAtIcon} className="locationIcon"></img>
                   Joined {tweet.user.created_at}
                 </div>
@@ -233,7 +234,7 @@ const RandomTweets = () => {
                   Followers{" "}
                 </div>
               </div>
-            </p>
+            </div>
             <p className="box">
               <div className="userName">
                 <img
