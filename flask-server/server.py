@@ -40,16 +40,23 @@ def search():
 
 @app.route("/api/randomtweets")
 
+
 def random():
-    request_url = url_base + "2/tweets/search/recent"
+    
+    id = request.args.get("userTweets")
+
+    request_url = url_base + "2/users" + id
+    
     params = {
-        "query":"from:Outlander_STARZ",
+        "start_time":"2010-11-06T00:00:00Z",
+        "max_results":"100",
         "expansions": "author_id,referenced_tweets.id,attachments.media_keys",
         "tweet.fields" : "author_id,public_metrics,created_at,attachments,entities",
         "user.fields": "username,name,profile_image_url,description,verified,created_at,location,public_metrics",
         "media.fields": "url,preview_image_url"
         }
     
+    print(request_url)
     try:
         r = requests.get(request_url, headers=headers, params=params)
         data = r.json()

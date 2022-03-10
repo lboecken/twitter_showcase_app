@@ -8,7 +8,6 @@ import replyAction from "../img/reply-action_0.png";
 import playBtn from "../img/play_gif_2.png";
 import exploreImg from "../img/explore_img.png";
 
-
 const SearchTweets = () => {
   const [tweets, setTweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,11 +20,9 @@ const SearchTweets = () => {
       setIsDefault(false);
       if (!res.data.data) {
         setIsData(false);
-        // console.log("No Data Found");
       } else {
         setIsData(true);
       }
-      // console.log(res.data);
     });
   }
 
@@ -55,31 +52,51 @@ const SearchTweets = () => {
     };
   });
 
-  // console.log({ data });
+  const minMonths = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   function timeConvert(date) {
     let seconds = Math.floor((new Date() - new Date(date)) / 1000);
 
+    let currentDate = new Date(date);
+    let year = currentDate.getFullYear();
+    let mm = currentDate.getMonth();
+    let day = currentDate.getDate();
+    let fullDate = `${minMonths[mm]} ${day}, ${year}`;
+
     let interval = Math.floor(seconds / 31536000);
 
     if (interval > 1) {
-      return interval + " yrs ago";
+      return fullDate;
     }
 
     interval = Math.floor(seconds / 2592000);
     if (interval > 1) {
-      return interval + " months ago";
+      return fullDate;
     }
     interval = Math.floor(seconds / 86400);
 
     if (interval > 1) {
-      return interval + " days ago";
+      return fullDate;
     }
     interval = Math.floor(seconds / 3600);
 
     if (interval > 1) {
       return interval + " hrs ago";
     }
+
     interval = Math.floor(seconds / 60);
 
     if (interval > 1) {
@@ -102,7 +119,6 @@ const SearchTweets = () => {
         tweet.media.url = url;
         target = gif_URL;
         playButton = true;
-        // console.log("There is a gif present")
       }
 
       tweet.created_at = timeConvert(tweet.created_at);

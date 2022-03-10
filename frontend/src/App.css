@@ -65,6 +65,7 @@ input {
   width: 40%;
   border: 1px;
   border-style: solid;
+  border-radius: 10px;
   padding: 15px;
   overflow-wrap: break-word;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -86,7 +87,6 @@ input {
   width: 60px;
   height: 60px;
   border-radius: 50% !important;
-  /* border: 1px solid rgba(0, 0, 0, 0.5); */
 }
 .circularProfileIcon {
   width: 110px;
@@ -156,8 +156,7 @@ input {
 }
 
 .locationIcon {
-  max-width: 25px;
-  /* padding-right: 5px; */
+  max-width: 20px;
 }
 
 .locationDiv {
@@ -169,7 +168,6 @@ input {
 .metricPadding {
   overflow: hidden;
   display: flex;
-  /* justify-content: space-evenly; */
   padding: 15px;
   pointer-events: none;
 }
@@ -186,5 +184,32 @@ input {
 }
 
 .extraPadding {
-  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.staticProfileIcons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.staticProfileIcons {
+  padding: 20px;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 50% !important;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.center_p {
+  margin: 0 auto;
+  text-align: center;
 }
