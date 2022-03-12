@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm start",
-    "heroku-postbuild":"npm run compile --prefix frontend"
+    "heroku-postbuild":"npm run compile --prefix ./frontend"
   },
   "repository": {
     "type": "git",
