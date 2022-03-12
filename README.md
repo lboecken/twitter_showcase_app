@@ -2,7 +2,7 @@
 Summary: <br>
 This app allows the user to search recent tweets by subject or keyword and pull random tweets from specific profiles on Twitter. It was written in HTML, CSS, Javascript and Python. It uses React, Bootstrap, Flask as an internal API and the Twitter API.
 
-<a href="">Click here to test out the app!</a> 
+<a href="https://twidda-app.herokuapp.com/">Click here to test out the app!</a> 
 
 <img width="514" alt="Twitter App Screenshot 1" src="https://user-images.githubusercontent.com/77046115/157813878-9d282fc7-5023-4e8d-8fb6-704d92a27cad.png">
 <img width="514" alt="Twitter App Screenshot 2" src="https://user-images.githubusercontent.com/77046115/157813984-fbc815ec-5376-4eb8-bfd9-91c466d456c1.png">
