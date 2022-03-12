@@ -52,6 +52,14 @@ const SearchTweets = () => {
     };
   });
 
+  const largeNumFormatter = (num) => {
+    return Math.abs(num) > 999 && Math.abs(num) < 999999
+      ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "K"
+      : Math.abs(num) > 999999
+      ? Math.sign(num) * (Math.abs(num) / 1000000).toFixed(1) + "M"
+      : Math.sign(num) * Math.abs(num);
+  };
+
   const minMonths = [
     "Jan",
     "Feb",
@@ -160,18 +168,18 @@ const SearchTweets = () => {
           <div className="analyticsDiv">
             <div>
               <img src={replyAction} className="analyticsIcons"></img>{" "}
-              {tweet?.retweet_metrics[0]?.public_metrics?.reply_count ||
-                tweet.public_metrics.reply_count}
+              {largeNumFormatter(tweet?.retweet_metrics[0]?.public_metrics?.reply_count)  ||
+                largeNumFormatter(tweet.public_metrics.reply_count)}
             </div>
             <div>
               <img src={retweetsAction} className="analyticsIcons"></img>{" "}
-              {tweet?.retweet_metrics[0]?.public_metrics?.retweet_count ||
-                tweet.public_metrics.retweet_count}
+              {largeNumFormatter(tweet?.retweet_metrics[0]?.public_metrics?.retweet_count) ||
+                largeNumFormatter(tweet.public_metrics.retweet_count)}
             </div>
             <div>
               <img src={likeAction} className="analyticsIcons"></img>{" "}
-              {tweet?.retweet_metrics[0]?.public_metrics?.like_count ||
-                tweet.public_metrics.like_count}
+              {largeNumFormatter(tweet?.retweet_metrics[0]?.public_metrics?.like_count) ||
+                largeNumFormatter(tweet.public_metrics.like_count)}
             </div>
           </div>
         </p>
