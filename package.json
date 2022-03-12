@@ -1,0 +1,25 @@
+{
+  "name": "twitter_showcase_app",
+  "version": "1.0.0",
+  "description": "An app that allows users to pull tweets from Twitter API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start",
+    "build": "npm run compile",
+    "heroku-postbuild":"npm run compile --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheyjax116/twitter_showcase_app.git"
+  },
+  "keywords": [
+    "twidda"
+  ],
+  "author": "crystalword",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheyjax116/twitter_showcase_app/issues"
+  },
+  "homepage": "https://github.com/cheyjax116/twitter_showcase_app#readme"
+}
