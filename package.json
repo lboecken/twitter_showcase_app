@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/cheyjax116/twitter_showcase_app#readme",
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "react-bootstrap": "^2.2.1",
     "react-scripts": "^5.0.0"
   }
