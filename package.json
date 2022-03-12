@@ -4,12 +4,14 @@
   "description": "An app that allows users to pull tweets from Twitter API",
   "main": "index.js",
   "engines": {
-    "node": ">=6.9.0"
+    "node": "14.16.0",
+    "npm": "8.4.0"
+    
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm start",
-    "heroku-postbuild": "npm run compile --prefix frontend && npm install"
+    "heroku-postbuild": "npm install && npm run compile --prefix frontend"
   },
   "repository": {
     "type": "git",
