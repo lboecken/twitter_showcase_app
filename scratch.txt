@@ -1,0 +1,26 @@
+
+[X] requirements.txt -should only include explicit dependencies
+[X] node_modules, package-lock.json should not be in repo.
+[X] 'npm run compile' -> delete frontend source. Not needed anymore. 
+
+flask-server
+[X] venv should not be committed
+[X] node_modules, package.json, package-lock.json should not exist here at all.
+[] implement factor pattern for app creation
+    [] Config from env vars OR class 
+[] separate startup from route definition (okay on smaller apps, 
+    bad practice on anything larger than this project)
+[] poor API response --> Flask-RestX
+[] formatting with PEP or BLACK
+[] Separation of concerns. 
+    Endpoints should not query Twitter & return the data to user
+[X] Remove print statements
+
+frontend
+[] Move data manipulation to server
+[] Simplify image imports
+[] get**Tweets function -> create generic function to handle all requests.
+[] Break home into smaller component / remove excess divs?
+    Not sure how feasible this is / whats the best solution here.
+[] clean up randomTweet
+[] clean up SearchTweets

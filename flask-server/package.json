@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "axios": "^0.26.0",
-    "livereload": "^0.9.3"
-  }
-}
